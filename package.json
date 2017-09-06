@@ -16,10 +16,12 @@
   "dependencies": {
     "async": "^2.5.0",
     "body-parser": "^1.17.2",
+    "change-case": "^3.0.1",
     "cors": "^2.8.4",
     "express": "^4.15.3",
     "morgan": "^1.8.2",
     "nconf": "^0.8.4",
+    "require-dir": "^0.3.2",
     "winston": "^2.3.1"
   }
 }
