@@ -10,7 +10,7 @@ const morgan = require('morgan');
 const logger = require('winston');
 
 
-let contacts = require('./data');
+//let contacts = require('./data');
 var app;
 
 // hostname and port configuration
@@ -26,7 +26,7 @@ var start = function(cb){
      app.use(bodyParser.json({type: '*/*'}));
      app.use(cors());
      logger.info('[Server] Intializing routes, hold on please ...');
-     require('../../app/routes/index');
+     require('../../app/routes/index')(app);
 
      // catching exceptions
      app.use(function(err, req,res,next){

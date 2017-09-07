@@ -3,7 +3,7 @@
 var mysql = require('mysql');
 
 var poolConnection;
-
+var con;
 module.exports = {
 
     getPool: function(){
@@ -18,6 +18,19 @@ module.exports = {
             database:'corporateenglishdb'
             //gato92#
         });
+        return poolConnection;
+
+    },
+    connectToPool: function(){
+        
+        poolConnection.getConnection(function(err,connection){
+            if(err){
+                throw err;
+            }
+            con = connection;
+            console.log("Success");
+        });
+        return con;
 
     }
 

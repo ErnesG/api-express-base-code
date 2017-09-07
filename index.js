@@ -21,9 +21,13 @@ logger.info('[APP] starting server initialization');
 // Initialize Modules
 async.series([
     function initiDbConnection(callback){
-        require('./config/initializers/database')(callback);
+        logger.info('phase1');
+       callback = require('./config/initializers/database');
+       callback.getPool();
+      // callback.connectToPool();
     },
     function startServer(callback){
+        logger.info('phase2');
         server(callback);
     }],function(err){
         if (err){
