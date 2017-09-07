@@ -15,7 +15,7 @@ module.exports = {
             host:'localhost',
             user:'root',
             password:'root',
-            database:'corporateenglish'
+            database:'corporateenglishdb'
             //gato92#
         });
 
