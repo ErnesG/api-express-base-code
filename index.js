@@ -1,7 +1,9 @@
 'use strict';
-//calling the server
+//injecting server.js
 var server = require('./config/initializers/server');
+//configuration dependencie
 var nconf = require('nconf');
+//loading modules dependency
 var async = require('async');
 const logger= require('winston');
 
@@ -20,15 +22,13 @@ logger.info('[APP] starting server initialization');
 
 // Initialize Modules
 async.series([
-    //function initiDbConnection(callback){
-      //  logger.info('phase1');
-       // callback.connectToPool();+ 
-    //},
+   
     function startServer(callback){
+        // creates db pool connection
         callback = require('./config/initializers/database');
         callback.getPool();
       
-        logger.info('phase2');
+        logger.info('[SERVER] READY, GO --->');
         server(callback);
     }],function(err){
         if (err){
