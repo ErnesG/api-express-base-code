@@ -2,6 +2,7 @@ var changeCase = require('change-case');
 var express = require('express');
 var routes = require('require-dir')();
 // this router index just parses every defined route to lowercase
+
 module.exports = function(app){
     'use strict';
     //init every route

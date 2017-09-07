@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 const logger = require('winston');
-
+var config = require('nconf');
 
 //let contacts = require('./data');
 var app;
@@ -16,6 +16,7 @@ var app;
 // hostname and port configuration
 const hostname  = 'localhost';
 const port = 3001;
+
 
 var start = function(cb){
     'use strict';
@@ -27,6 +28,9 @@ var start = function(cb){
      app.use(cors());
      logger.info('[Server] Intializing routes, hold on please ...');
      require('../../app/routes/index')(app);
+     var router = express.Router();
+     app.use('/',router);
+     require('../../app/routes/user')(router);
 
      // catching exceptions
      app.use(function(err, req,res,next){
@@ -42,7 +46,7 @@ var start = function(cb){
      app.listen(config.get('NODE_PORT'));
      logger.info('[Server] Listening on port '+config.get('NODE_PORT'));
      if(cb){
-         return cb();
+         return cb;
      }
 
 };
